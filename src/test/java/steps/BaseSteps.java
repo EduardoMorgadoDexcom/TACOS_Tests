@@ -21,7 +21,7 @@ public class BaseSteps {
     protected HomePageElements homePageElements = new HomePageElements();
     protected NewPostElements newPostElements = new NewPostElements();
     protected DetailsPageElements detailsPageElements = new DetailsPageElements();
-    protected BaseTest baseTest = new BaseTest();
+    protected BaseTest baseTest = BaseTest.getInstance();
 
     public void logIn() {
         baseTest.getDriver().findElement(By.id(loginElements.getUsernameTxt())).click();
@@ -95,11 +95,19 @@ public class BaseSteps {
         return false;
     }
 
-    public void verifyFormIncompleteForTitle() {
+    public void verifyFormIncompleteByTitle() {
         //We verify if the user still on the same page, meaning the form has not been submitted.
         Assert.assertTrue(baseTest.getDriver().findElement(By.xpath(newPostElements.getPageTitle())).isDisplayed());
         WebElement titleTxt = baseTest.getDriver().findElement(By.id(newPostElements.getTitleTxt()));
         //We verify if the Title TextBox has the focus, meaning the system indicates that is required.
         Assert.assertTrue(titleTxt.equals(baseTest.getDriver().switchTo().activeElement()));
+    }
+
+    public void verifyFormIncompleteBySubtitle() {
+        //We verify if the user still on the same page, meaning the form has not been submitted.
+        Assert.assertTrue(baseTest.getDriver().findElement(By.xpath(newPostElements.getPageTitle())).isDisplayed());
+        WebElement subtitleTxt = baseTest.getDriver().findElement(By.id(newPostElements.getSubtitleTxt()));
+        //We verify if the Title TextBox has the focus, meaning the system indicates that is required.
+        Assert.assertTrue(subtitleTxt.equals(baseTest.getDriver().switchTo().activeElement()));
     }
 }

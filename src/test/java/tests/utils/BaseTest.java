@@ -9,16 +9,24 @@ import java.time.Duration;
 
 public class BaseTest {
 
+    private static BaseTest instance;
     protected WebDriver driver;
     public String username = "eduardomj99";
     public String password = "FTE2017!";
 
-    public BaseTest() {
+    private BaseTest() {
         initialSetup();
     }
 
-    @BeforeTest
+    public static BaseTest getInstance() {
+        if(instance == null) {
+            instance = new BaseTest();
+        }
+        return instance;
+    }
+
     public void initialSetup() {
+        System.out.println("Test");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //driver.manage().window().maximize();
@@ -29,7 +37,6 @@ public class BaseTest {
         return driver;
     }
 
-    @AfterTest
     public void finishTest() {
         driver.close();
         driver.quit();

@@ -9,7 +9,6 @@ import tests.utils.BaseTest;
 import tests.utils.Pages;
 
 public class CreatePostsTests {
-
     BaseSteps baseSteps = new BaseSteps();
 
     @Test(description = "Scenario 1: User creates post.")
@@ -34,6 +33,18 @@ public class CreatePostsTests {
         baseSteps.logIn();
         baseSteps.navigateTo(Pages.NEWPOST);
         baseSteps.fillAndSubmitPost(title,subtitle,body);
-        baseSteps.verifyFormIncompleteForTitle();
+        baseSteps.verifyFormIncompleteByTitle();
+    }
+
+    @Test(description = "Scenario 3: User fails to create post because of missing subtitle")
+    public void userFailsCreatingPostByMissingSubtitleTest() {
+        String title = "Title of the post";
+        String subtitle = "";
+        String body = "Body of the post.";
+
+        baseSteps.logIn();
+        baseSteps.navigateTo(Pages.NEWPOST);
+        baseSteps.fillAndSubmitPost(title,subtitle,body);
+        baseSteps.verifyFormIncompleteBySubtitle();
     }
 }
