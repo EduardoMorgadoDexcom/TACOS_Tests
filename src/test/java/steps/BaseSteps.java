@@ -5,6 +5,7 @@ import elements.HomePageElements;
 import elements.LoginElements;
 import elements.NewPostElements;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import tests.utils.BaseTest;
 import tests.utils.Pages;
@@ -55,6 +56,8 @@ public class BaseSteps {
     }
 
     public void verifyFormSubmitted(String title, String subtitle, String body) {
+        //We verify if the user is not on the same page, meaning the form has been submitted.
+        Assert.assertTrue(baseTest.getDriver().findElement(By.xpath(newPostElements.getPageTitle())).isDisplayed());
         String titleSubmitted = baseTest.getDriver().findElement(By.xpath(detailsPageElements.getTitleTxt())).getText();
         String subtitleSubmitted = baseTest.getDriver().findElement(By.xpath(detailsPageElements.getSubtitleTxt())).getText();
         String bodySubmitted = baseTest.getDriver().findElement(By.xpath(detailsPageElements.getBodyTxt())).getText();
@@ -90,5 +93,13 @@ public class BaseSteps {
 
         //Returning false for the moment.
         return false;
+    }
+
+    public void verifyFormIncompleteForTitle() {
+        //We verify if the user still on the same page, meaning the form has not been submitted.
+        Assert.assertTrue(baseTest.getDriver().findElement(By.xpath(newPostElements.getPageTitle())).isDisplayed());
+        WebElement titleTxt = baseTest.getDriver().findElement(By.id(newPostElements.getTitleTxt()));
+        //We verify if the Title TextBox has the focus, meaning the system indicates that is required.
+        Assert.assertTrue(titleTxt.equals(baseTest.getDriver().switchTo().activeElement()));
     }
 }

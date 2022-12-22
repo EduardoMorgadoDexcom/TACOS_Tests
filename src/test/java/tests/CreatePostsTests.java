@@ -24,4 +24,16 @@ public class CreatePostsTests {
         baseSteps.verifyFormSubmitted(title,subtitle,body);
         baseSteps.verifyAuthorAndDate();
     }
+
+    @Test(description = "Scenario 2: User fails to create post because of missing title")
+    public void userFailsCreatingPostByMissingTitleTest() {
+        String title = "";
+        String subtitle = "Subtitle of the post";
+        String body = "Body of the post.";
+
+        baseSteps.logIn();
+        baseSteps.navigateTo(Pages.NEWPOST);
+        baseSteps.fillAndSubmitPost(title,subtitle,body);
+        baseSteps.verifyFormIncompleteForTitle();
+    }
 }

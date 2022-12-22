@@ -10,6 +10,8 @@ public class NewPostElements {
 
     static private String createBtn = "//input[@type=\'submit\']";
 
+    static private String pageTitle = "/html/body/div/h1";
+
     public String getTitleTxt() {
         return titleTxt;
     }
@@ -24,5 +26,9 @@ public class NewPostElements {
 
     public String getCreateBtn() {
         return createBtn;
+    }
+
+    public String getPageTitle() {
+        return pageTitle;
     }
 }
