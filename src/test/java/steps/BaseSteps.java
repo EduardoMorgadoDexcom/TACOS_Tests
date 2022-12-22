@@ -25,9 +25,9 @@ public class BaseSteps {
 
     public void logIn() {
         baseTest.getDriver().findElement(By.id(loginElements.getUsernameTxt())).click();
-        baseTest.getDriver().findElement(By.id(loginElements.getUsernameTxt())).sendKeys(baseTest.username);
+        baseTest.getDriver().findElement(By.id(loginElements.getUsernameTxt())).sendKeys(baseTest.getUsername());
         baseTest.getDriver().findElement(By.id(loginElements.getPasswordTxt())).click();
-        baseTest.getDriver().findElement(By.id(loginElements.getPasswordTxt())).sendKeys(baseTest.password);
+        baseTest.getDriver().findElement(By.id(loginElements.getPasswordTxt())).sendKeys(baseTest.getPassword());
         baseTest.getDriver().findElement(By.xpath(loginElements.getLoginBtn())).click();
     }
 
@@ -68,7 +68,7 @@ public class BaseSteps {
 
     public void verifyAuthorAndDate() {
         String authorAndDate = baseTest.getDriver().findElement(By.xpath(detailsPageElements.getAuthorAndDate())).getText();
-        Assert.assertTrue(isSameAuthor(authorAndDate, baseTest.username));
+        Assert.assertTrue(isSameAuthor(authorAndDate, baseTest.getUsername()));
         Assert.assertTrue(isSameDate(authorAndDate));
     }
 
