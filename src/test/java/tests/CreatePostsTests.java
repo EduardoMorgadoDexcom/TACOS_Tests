@@ -1,11 +1,7 @@
 package tests;
 
-import org.checkerframework.checker.units.qual.C;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import steps.BaseSteps;
-import steps.CreatePostsSteps;
-import tests.utils.BaseTest;
 import tests.utils.Pages;
 
 public class CreatePostsTests {

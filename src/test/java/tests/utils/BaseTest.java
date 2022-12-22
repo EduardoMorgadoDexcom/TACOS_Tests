@@ -1,10 +1,7 @@
 package tests.utils;
 
-import org.omg.PortableInterceptor.SUCCESSFUL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 
 import java.io.*;
 import java.time.Duration;

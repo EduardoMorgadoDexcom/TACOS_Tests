@@ -11,8 +11,6 @@ import tests.utils.BaseTest;
 import tests.utils.Pages;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.Date;
 
 public class BaseSteps {
